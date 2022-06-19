@@ -94,6 +94,7 @@
                   <!-- CONNECTIVITY -->
                     <label for="connection-type">&nbsp; Connection Type: &nbsp;</label>
                     <select name="connection-type" id="connection-type">
+                      <option value="None">None</option>
                       <optgroup label="Wireless">Wireless</optgroup>
                       <option value="Wirelessly connected">Wireless</option>
                       <optgroup label="USB">USB</optgroup>
@@ -110,12 +111,16 @@
               <!-- FORM PHP -->
               <?php 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    
+
                     $case_synopsis = $_POST["synopsis"];
                     $scanner_model = $_POST["scanners"] . "&nbsp;&nbsp;";
                     $OS = $_POST["OS"] . "&nbsp;&nbsp;";
                     $software = $_POST["software"];
                     $connection_type = $_POST["connection-type"];
+
+                    if ($software !== "none") {
+                      $software = "HEY";
+                    }
 
                     echo $case_synopsis;
                     echo "<br>";
