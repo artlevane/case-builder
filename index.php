@@ -113,13 +113,29 @@
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $case_synopsis = $_POST["synopsis"];
-                    $scanner_model = $_POST["scanners"] . "&nbsp;&nbsp;";
-                    $OS = $_POST["OS"] . "&nbsp;&nbsp;";
+                    $scanner_model = $_POST["scanners"];
+                    $OS = $_POST["OS"];
                     $software = $_POST["software"];
                     $connection_type = $_POST["connection-type"];
 
-                    if ($software !== "none") {
-                      $software = "HEY";
+                    if ($scanner_model == "None") {
+                      $scanner_model = "";
+                    } else {
+                      $scanner_model = $scanner_model . "&nbsp;&nbsp;";
+                    }
+
+                    if ($OS == "None") {
+                      $OS = "";
+                    } else {
+                      $OS = $OS . "&nbsp;&nbsp;";
+                    }
+
+                    if ($software == "None") {
+                      $software = "";
+                    }
+
+                    if ($connection_type == "None") {
+                      $connection_type = "";
                     }
 
                     echo $case_synopsis;
